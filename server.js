@@ -30,6 +30,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
+app.get('/js/main.js', (req, res) => {
+    res.sendFile(__dirname + '/js/main.js')
+})
+
 app.get('/api/:rapperName', (req, res) => {
     const rappersName = req.params.rapperName.toLowerCase()
 
