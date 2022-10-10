@@ -7,9 +7,15 @@ async function getData() {
         const res = await fetch(`https://robertlent-rap-names-api.herokuapp.com/api/${rapperName}`)
         const data = await res.json()
 
-        document.querySelector('#name').innerText = `Birth Name: ${data.birthName}`
-        document.querySelector('#age').innerText = `Age: ${data.age}`
-        document.querySelector('#birthLocation').innerText = `Born in: ${data.birthLocation}`
+        document.querySelector('#name').innerHTML = `Birth Name:<br>&emsp;&emsp;${data.birthName}`
+
+        const dob = new Date(data.dob)
+        const today = new Date()
+        const diff = today.getTime() -dob.getTime()
+        const age = Math.trunc(diff / 31556952000)
+        document.querySelector('#age').innerHTML = `Age:<br>&emsp;&emsp;${age} years old`
+        
+        document.querySelector('#birthLocation').innerHTML = `Born in:<br>&emsp;&emsp;${data.birthLocation}`
     } catch (error) {
         console.log(error);
     }
