@@ -4,6 +4,7 @@ const cors = require('cors')
 const PORT = 8000
 
 app.use(cors())
+app.use(express.static(__dirname + '/public'))
 
 const rappers = {
     '21 savage': {
@@ -60,18 +61,6 @@ const rappers = {
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
-})
-
-app.get('/js/main.js', (req, res) => {
-    res.sendFile(__dirname + '/js/main.js')
-})
-
-app.get('/css/normalize.css', (req, res) => {
-    res.sendFile(__dirname + '/css/normalize.css')
-})
-
-app.get('/css/style.css', (req, res) => {
-    res.sendFile(__dirname + '/css/style.css')
 })
 
 app.get('/api/:rapperName', (req, res) => {
